@@ -43,7 +43,7 @@ steps:
     jdkSourceOption: 'PreInstalled'
 - script: |
        sudo apt-get update
-       sudo apt-get -y curl jq
+       sudo apt-get -y install curl jq
 - script: |
           mvn verify package sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=azuredevsecops09-2025 -Dsonar.projectKey=azuredevsecops09-2025_azuredevsecops09-2025 -Dsonar.token=385d1ca41605e46a237e197c7a9c5d66104f70b7
 
