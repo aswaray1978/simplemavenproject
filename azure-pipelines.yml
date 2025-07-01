@@ -46,11 +46,24 @@ steps:
        sudo apt-get -y install curl jq
 - script: |
           mvn verify package sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=azuredevsecops09-2025 -Dsonar.projectKey=azuredevsecops09-2025_azuredevsecops09-2025 -Dsonar.token=385d1ca41605e46a237e197c7a9c5d66104f70b7 
+- task: Docker@2
+  inputs:
+    containerRegistry: 'docker2'
+    repository: 'bostondataengineer/dso09app'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
 - task: Bash@3
   inputs:
     targetType: 'inline'
     script: |
       echo "Installing Trivy."
       curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.64.0
-    displayName: 'Install Trivy'
+  displayName: 'Install Trivy' 
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo Running Trivy Scan...
+      trivy image bostondataengineer/dso09app:latest
+  displayName: 'Run Trivy Scan'
 
