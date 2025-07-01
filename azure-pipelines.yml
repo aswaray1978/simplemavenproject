@@ -36,7 +36,7 @@ steps:
   inputs:
     containerRegistry: 'docker2'
     command: 'login'
-- task: JavaToolInstaller@1
+- task: JavaToolInstaller@0
   inputs:
     versionSpec: '17'
     jdkArchitectureOption: 'x64'
