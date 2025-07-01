@@ -64,6 +64,6 @@ steps:
     targetType: 'inline'
     script: |
       echo Running Trivy Scan...
-      trivy image bostondataengineer/dso09app:latest
+      trivy image bostondataengineer/dso09app
   displayName: 'Run Trivy Scan'
 
