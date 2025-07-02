@@ -51,7 +51,7 @@ steps:
     containerRegistry: 'docker2'
     repository: 'bostondataengineer/dso09app'
     command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
+    Dockerfile: '**/AzureDockerfile'
 - task: Bash@3
   inputs:
     targetType: 'inline'
